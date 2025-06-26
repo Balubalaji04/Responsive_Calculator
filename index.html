@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #displayArea {
+      width: 100%;
+      max-width: 400px;
+      background: #1e1e1e;
+      font-size: 2.5rem;
+      padding: 15px;
+      text-align: right;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      word-wrap: break-word;
+    }
+
+    .calculator {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    button {
+      padding: 20px;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 15px;
+      background-color: black;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background-color: white;
+      color: black;
+      box-shadow: 0 0 10px white;
+    }
+
+    @media screen and (max-width: 500px) {
+      button {
+        font-size: 1.2rem;
+        padding: 15px;
+      }
+      #displayArea {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculator</h1>
+  <div id="displayArea">0</div>
+  <div class="calculator" id="calcButtons">
+  </div>
+
+  <script>
+    const buttons = [
+      '7','8','9','/',
+      '4','5','6','*',
+      '1','2','3','-',
+      '0','.','=','+',
+      'clear'
+    ];
+
+    let calculation = '';
+
+    const display = document.getElementById("displayArea");
+    const container = document.getElementById("calcButtons");
+
+    buttons.forEach(btn => {
+      const buttonEl = document.createElement("button");
+      buttonEl.textContent = btn;
+      buttonEl.onclick = () => handleClick(btn);
+      container.appendChild(buttonEl);
+    });
+
+    function handleClick(value) {
+      if (value === 'clear') {
+        calculation = '';
+        updateDisplay('0');
+      } else if (value === '=') {
+        try {
+          calculation = eval(calculation).toString();
+          updateDisplay(calculation);
+        } catch {
+          updateDisplay('Error');
+          calculation = '';
+        }
+      } else {
+        calculation += value;
+        updateDisplay(calculation);
+      }
+    }
+
+    function updateDisplay(content) {
+      display.textContent = content;
+    }
+  </script>
+</body>
+</html>
