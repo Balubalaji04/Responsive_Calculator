@@ -10,9 +10,6 @@ A sleek, responsive calculator built with pure HTML, CSS, and JavaScript. This w
 - Clear button to reset the calculation
 - Real-time input display and error handling
 
-## 📸 Preview
-
-![Calculator Screenshot](./preview.png) <!-- Optional: Add your own screenshot to your repo -->
 
 ## 💻 Tech Stack
 
@@ -20,9 +17,6 @@ A sleek, responsive calculator built with pure HTML, CSS, and JavaScript. This w
 - CSS3 (Flexbox + Grid)
 - JavaScript (Vanilla)
 
-## 📂 Live Demo
-
-🔗 [View Calculator Online](https://balubalaji04.github.io/Responsive_Calculator)
 
 ## 🧠 Lessons Learned
 
